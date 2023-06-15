@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CGPA Calculator</title>
+  <style>
+
+    body
+    {
+       font-family:sans-serif;
+       background-color: #6a4caf;
+    }
+    .container {
+      position: absolute;
+      top: 2em;
+      left: 35%;
+      width: 400px;
+      height: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f3f3f3;
+  
+    }
+    .container h2
+    {
+      position: relative;
+      text-align : center ;
+      top: -1em;
+      color: #6a4caf;
+    }
+    hr
+    {
+      position: relative;
+      top: -1.8em;
+      height: 2px;
+      background-color: #80737331;
+      
+
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group
+    {
+      position: relative;
+      left: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom:5px;
+    }
+
+    .form-group input {
+      width: 80%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #6a4caf;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .result {
+      position: relative;
+      margin-top: 20px;
+      font-weight: bold;
+      left:35%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>CGPA CALCULATOR</h2>
+    <hr>
+    <div class="form-group">
+      <label for="numSemesters">Number of Semesters :</label>
+      <input type="number" id="numSemesters" placeholder="Enter number of semesters" min="1" required>
+    </div>
+    <div class="form-group">
+      <label for="sumSGPAs">Sum of SGPA of All Semesters :</label>
+      <input type="number" id="sumSGPAs" placeholder="Enter sum of SGPAs" min="0" step="0.01" required>
+    </div>
+    <button class="btn" onclick="calculateCGPA()">CALCULATE CGPA</button>
+    <div class="result" id="cgpaResult"></div>
+  </div>
+
+  <script>
+    function calculateCGPA() {
+      var numSemesters = parseInt(document.getElementById('numSemesters').value);
+      var sumSGPAs = parseFloat(document.getElementById('sumSGPAs').value);
+      
+      if (numSemesters <= 0 || sumSGPAs < 0) {
+        document.getElementById('cgpaResult').innerHTML = 'Invalid input';
+        return;
+      }
+      
+      var cgpa = sumSGPAs / numSemesters;
+      document.getElementById('cgpaResult').innerHTML = 'CGPA: ' + cgpa.toFixed(2);
+    }
+  </script>
+</body>
+</html>
